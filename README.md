@@ -72,3 +72,6 @@ print(sort_by_date(transactions))
 # Сортировка по дате — от старых к новым
 print(sort_by_date(transactions, reverse=False))
 
+## Автор
+
+Проект создан в рамках обучения Python-разработке.
