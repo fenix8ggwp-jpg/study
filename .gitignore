@@ -222,3 +222,8 @@ project.zip
 *.zip
 
 .env
+
+htmlcov/
+.coverage
+.coverage.*
+.pytest_cache/
