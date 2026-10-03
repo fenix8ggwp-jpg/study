@@ -72,3 +72,70 @@ print(sort_by_date(transactions))
 # Сортировка по дате — от старых к новым
 print(sort_by_date(transactions, reverse=False))
 
+## Генераторы
+
+### Фильтрация транзакций по валюте
+
+```python
+from src.generators import filter_by_currency
+
+usd_transactions = filter_by_currency(transactions, "USD")
+for _ in range(2):
+    print(next(usd_transactions))
+
+from src.generators import transaction_descriptions
+
+descriptions = transaction_descriptions(transactions)
+for _ in range(5):
+    print(next(descriptions))
+
+from src.generators import card_number_generator
+
+for card_number in card_number_generator(1, 5):
+    print(card_number)
+# 0000 0000 0000 0001
+# 0000 0000 0000 0002
+# ...
+
+## Работа с JSON и API
+
+### Загрузка транзакций из JSON-файла
+
+Функция `load_transactions` читает транзакции из JSON-файла. Если файл не найден, пустой, содержит не-список или некорректный JSON — возвращает пустой список.
+
+```python
+from src.utils import load_transactions
+
+transactions = load_transactions("data/operations.json")
+print(transactions)
+```
+
+### Конвертация валют
+
+Функция `convert_to_rub` принимает транзакцию и возвращает сумму в рублях (float). Если валюта операции — `USD` или `EUR`, происходит обращение к внешнему API за актуальным курсом.
+
+```python
+from src.external_api import convert_to_rub
+
+transaction = {
+    "operationAmount": {
+        "amount": "100",
+        "currency": {"code": "USD"},
+    }
+}
+print(convert_to_rub(transaction))  # например, 9000.0
+```
+
+### Настройка переменных окружения
+
+1. Скопируйте шаблон `.env.example` в `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+2. Заполните переменные:
+   - `EXCHANGE_API_KEY` — ключ доступа к API конвертации валют.
+   - `EXCHANGE_API_URL` — базовый URL API.
+
+Файл `.env` не попадает в репозиторий (добавлен в `.gitignore`), потому что содержит чувствительные данные.
+
+
