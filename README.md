@@ -72,3 +72,17 @@ print(sort_by_date(transactions))
 # Сортировка по дате — от старых к новым
 print(sort_by_date(transactions, reverse=False))
 
+## Декоратор log
+
+Декоратор `log` автоматически логирует вызовы функций — имя, результат, ошибки.
+
+### Логирование в консоль
+
+```python
+from src.decorators import log
+
+@log()
+def add(x, y):
+    return x + y
+
+add(1, 2)  # Выведет в консоль: "add ok"
