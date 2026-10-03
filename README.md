@@ -72,3 +72,28 @@ print(sort_by_date(transactions))
 # Сортировка по дате — от старых к новым
 print(sort_by_date(transactions, reverse=False))
 
+## Генераторы
+
+### Фильтрация транзакций по валюте
+
+```python
+from src.generators import filter_by_currency
+
+usd_transactions = filter_by_currency(transactions, "USD")
+for _ in range(2):
+    print(next(usd_transactions))
+
+from src.generators import transaction_descriptions
+
+descriptions = transaction_descriptions(transactions)
+for _ in range(5):
+    print(next(descriptions))
+
+from src.generators import card_number_generator
+
+for card_number in card_number_generator(1, 5):
+    print(card_number)
+# 0000 0000 0000 0001
+# 0000 0000 0000 0002
+# ...
+
