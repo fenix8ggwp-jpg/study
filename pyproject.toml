@@ -8,6 +8,8 @@ packages = [{include = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
+requests = "^2.34.2"
+python-dotenv = "^1.2.4"
 
 [build-system]
 requires = ["poetry-core"]

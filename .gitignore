@@ -220,3 +220,5 @@ __marimo__/
 # Архивы и проектные файлы
 project.zip
 *.zip
+
+.env
