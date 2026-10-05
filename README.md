@@ -139,3 +139,12 @@ print(convert_to_rub(transaction))  # например, 9000.0
 Файл `.env` не попадает в репозиторий (добавлен в `.gitignore`), потому что содержит чувствительные данные.
 
 
+## Работа с CSV и Excel
+
+### Чтение CSV
+
+```python
+from src.file_readers import read_csv_transactions
+
+transactions = read_csv_transactions("data/transactions.csv")
+print(transactions)
