@@ -221,7 +221,7 @@ __marimo__/
 project.zip
 *.zip
 
-htmlcov/
+#htmlcov/
 .coverage
 .coverage.*
 .pytest_cache/
