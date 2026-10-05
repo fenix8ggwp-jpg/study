@@ -227,3 +227,8 @@ htmlcov/
 .coverage
 .coverage.*
 .pytest_cache/
+
+# Логи
+logs/*
+!logs/.gitkeep
+*.log
