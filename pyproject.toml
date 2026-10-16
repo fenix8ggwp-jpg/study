@@ -35,4 +35,29 @@ warn_return_any = true
 warn_unused_configs = true
 ignore_missing_imports = true
 explicit_package_bases = true
+<<<<<<< Updated upstream
 mypy_path = "."
+=======
+mypy_path = "."
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --cov=src --cov-report=term-missing --cov-fail-under=80"
+
+[tool.coverage.run]
+source = ["src"]
+omit = ["*/tests/*", "*/__init__.py"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == .__main__.:",
+]
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+ignore_errors = true
+>>>>>>> Stashed changes
